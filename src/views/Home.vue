@@ -1,18 +1,29 @@
 <template>
-  <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
-  </div>
+  <v-container fluid>
+      <v-row>
+        <v-carousel>
+          <v-carousel-item >
+            <syn-simbar></syn-simbar>
+          </v-carousel-item>
+          <v-carousel-item >
+            <syn-simbar></syn-simbar>
+          </v-carousel-item>
+        </v-carousel>
+      </v-row>
+    
+  </v-container>
 </template>
 
 <script>
-// @ is an alias to /src
-import HelloWorld from '@/components/HelloWorld.vue'
-
+import Simbar from '@/components/Simbar'
 export default {
-  name: 'home',
   components: {
-    HelloWorld
+    synSimbar:Simbar
+  },
+  computed:{
+    allsliders(){
+      return 2
+    }
   }
-}
+};
 </script>
