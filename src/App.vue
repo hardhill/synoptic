@@ -5,7 +5,7 @@
         <router-link to="/" tag="span" class="pointer">Synoptic</router-link>
       </v-toolbar-title>
       <v-spacer></v-spacer>
-         <v-text class="mr-2">ver. 0.1</v-text>
+         <v-label class="mr-2">ver. 0.1</v-label>
       
     </v-app-bar>
     <v-content>
