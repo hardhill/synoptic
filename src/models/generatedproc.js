@@ -29,18 +29,18 @@ export default {
     actions: {
         getDataAsync({
             commit
-        }, payload) {
+        }, option) {
             axios({
                 method:'get',
                 url:'https://api.coindesk.com/v1/bpi/currentprice.json',
                 responseType:'json'
             }).then(function(response){
                if(response.status==200){
-                payload = response.data
-                 commit('setChartData', payload)  
+                
+                 commit('setChartData', response.data)  
                }
             // eslint-disable-next-line no-console
-            }).catch((error) => {console.log('ERR')})
+            }).catch((error) => {console.log(error)})
             
         }
     },
