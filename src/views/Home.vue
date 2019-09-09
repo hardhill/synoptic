@@ -1,29 +1,31 @@
 <template>
   <v-container fluid>
-      <v-row>
-        <v-carousel>
-          <v-carousel-item >
-            <syn-simbar></syn-simbar>
-          </v-carousel-item>
-          <v-carousel-item >
-            <syn-simbar></syn-simbar>
-          </v-carousel-item>
-        </v-carousel>
-      </v-row>
-    
+    <v-row>
+      <v-col cols="12" sm="9">
+        <v-row justify="start">
+          <v-btn-toggle class="ml-5">
+            <v-btn>День</v-btn>
+            <v-btn>Месяц</v-btn>
+            <v-btn>Год</v-btn>
+          </v-btn-toggle>
+        </v-row>
+        <syn-simbar></syn-simbar>
+      </v-col>
+      <v-col cols="12" sm="3">
+        <syn-list title="Процессы" height="400px"></syn-list>
+      </v-col>
+    </v-row>
   </v-container>
 </template>
 
 <script>
-import Simbar from '@/components/Simbar'
+import Simbar from "@/components/Simbar";
+import SList from "@/components/SList";
 export default {
   components: {
-    synSimbar:Simbar
+    synSimbar: Simbar,
+    synList: SList
   },
-  computed:{
-    allsliders(){
-      return 2
-    }
-  }
+  computed: {}
 };
 </script>

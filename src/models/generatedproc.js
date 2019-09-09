@@ -36,8 +36,7 @@ export default {
                 responseType:'json'
             }).then(function(response){
                if(response.status==200){
-                
-                 commit('setChartData', response.data)  
+                  commit('setChartData', response.data)  
                }
             // eslint-disable-next-line no-console
             }).catch((error) => {console.log(error)})
