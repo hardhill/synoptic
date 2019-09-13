@@ -65,7 +65,7 @@ export default{
                     url: servurl +'/proctype',
                     responseType: 'json',
                     headers: {
-                        
+                      'Origin':'http://localhost'  
                     }
                 }
             )

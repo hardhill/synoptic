@@ -1,7 +1,7 @@
 <template>
   <v-container fluid>
     <v-row>
-      <v-col cols="12" sm="9">
+      <v-col cols="12" sm="8">
         <v-row justify="start">
           <v-btn-toggle class="ml-5">
             <v-btn>День</v-btn>
@@ -11,7 +11,7 @@
         </v-row>
         <syn-simbar></syn-simbar>
       </v-col>
-      <v-col cols="12" sm="3">
+      <v-col cols="12" sm="4">
         <syn-list title="Процессы" height="400px"></syn-list>
       </v-col>
     </v-row>

@@ -1,7 +1,7 @@
 <template>
 <div>
 <v-subheader>{{title}}</v-subheader>
-<v-card>
+<v-card class="py-2">
   <v-list :style="'height:'+height+';overflow-y:auto'">
     <v-list-item-group v-model="settingsprocess" multiple>
       <v-list-item v-for="(item,index) of getallprocess" :key="item.id" >
