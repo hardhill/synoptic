@@ -36,6 +36,7 @@ export default {
                 responseType: 'json'
             }).then(function (response) {
                 if (response.status == 200) {
+                    
                     commit('setChartData', response.data)
                 }
                 

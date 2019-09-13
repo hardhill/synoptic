@@ -11,6 +11,6 @@ export default new Vuex.Store({
     processes
   },
   state:{
-    servhost:window.location.protocol + '//' + window.location.hostname + (window.location.port ? ':' + window.location.port : '')
+    
   }
 })

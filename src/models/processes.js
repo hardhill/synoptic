@@ -2,6 +2,7 @@ import axios from "axios"
 
 export default{
     state:{
+        servhost: window.location.protocol + '//' + window.location.hostname + (window.location.port ? ':' + window.location.port : ''),
         processes:[
             {
                 id:1,
@@ -46,9 +47,10 @@ export default{
             state.processes.find(x=>x.id===payload.item.id).checked = !payload.active
         },
         SET_TYPEPROC(state,payload){
-            if(payload.length>0){
-                state.processes = []
-            }
+             state.processes = []
+             for( var i=0;i<payload.length;i++){
+                 state.processes.push({id:payload[i].id_typeproc,name:payload[i].nameproc,checked:false})
+             }
         }
     },
     actions:{
@@ -56,11 +58,15 @@ export default{
             await commit('SET_CHECKED',option)
         },
         loadTypeProcAsync({commit}){
+            var servurl = window.location.protocol + '//' + window.location.hostname + ':8088';
             axios(
                 {
                     method: 'get',
-                    url: this.$store.servhost+'/proctype',
+                    url: servurl +'/proctype',
                     responseType: 'json',
+                    headers: {
+                        
+                    }
                 }
             )
             .then((response)=>{

@@ -1,6 +1,7 @@
 <template>
 <div>
 <v-subheader>{{title}}</v-subheader>
+<v-card>
   <v-list :style="'height:'+height+';overflow-y:auto'">
     <v-list-item-group v-model="settingsprocess" multiple>
       <v-list-item v-for="(item,index) of getallprocess" :key="item.id" >
@@ -16,6 +17,7 @@
       </v-list-item>
     </v-list-item-group>
   </v-list>
+</v-card>
   <!-- <div>{{settingsprocess}}</div>
   <div>{{getallprocess}}</div> -->
 </div>
@@ -42,12 +44,11 @@ export default {
           this.$store.dispatch('setChecked',{item,active})
       },
       loadAllTypeProc(){
-
           this.$store.dispatch('loadTypeProcAsync',{})
       }
   },
   mounted(){
-   // this.loadAllTypeProc()
+    this.loadAllTypeProc()
   }
 };
 </script>
