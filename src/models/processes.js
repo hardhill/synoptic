@@ -1,3 +1,5 @@
+import axios from "axios"
+
 export default{
     state:{
         processes:[
@@ -42,11 +44,32 @@ export default{
     mutations:{
         SET_CHECKED(state,payload){
             state.processes.find(x=>x.id===payload.item.id).checked = !payload.active
+        },
+        SET_TYPEPROC(state,payload){
+            if(payload.length>0){
+                state.processes = []
+            }
         }
     },
     actions:{
         async setChecked({commit},option){
             await commit('SET_CHECKED',option)
+        },
+        loadTypeProcAsync({commit}){
+            axios(
+                {
+                    method: 'get',
+                    url: this.$store.servhost+'/proctype',
+                    responseType: 'json',
+                }
+            )
+            .then((response)=>{
+                if(response.status===200){
+                    commit('SET_TYPEPROC',response.data)
+                }
+            })
+            // eslint-disable-next-line no-console
+            .catch((err)=>{console.log(err)})
         }
     },
     getters:{

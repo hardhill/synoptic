@@ -18,29 +18,32 @@ export default {
         }
     },
     mutations: {
-        setChartData(state,payload){
+        setChartData(state) {
             state.seriesData = [{
-                name:'other',
-                data:[67,22,13,78,23,65,62,9]
+                name: 'other',
+                data: [67, 22, 13, 78, 23, 65, 62, 9]
             }]
-            
+
         }
     },
     actions: {
         getDataAsync({
             commit
-        }, option) {
+        }) {
             axios({
-                method:'get',
-                url:'https://api.coindesk.com/v1/bpi/currentprice.json',
-                responseType:'json'
-            }).then(function(response){
-               if(response.status==200){
-                  commit('setChartData', response.data)  
-               }
-            // eslint-disable-next-line no-console
-            }).catch((error) => {console.log(error)})
-            
+                method: 'get',
+                url: 'https://api.coindesk.com/v1/bpi/currentprice.json',
+                responseType: 'json'
+            }).then(function (response) {
+                if (response.status == 200) {
+                    commit('setChartData', response.data)
+                }
+                
+            }).catch((error) => {
+                // eslint-disable-next-line no-console
+                console.log(error)
+            })
+
         }
     },
     getters: {

@@ -40,7 +40,14 @@ export default {
   methods:{
       setActive(idx,item,active){
           this.$store.dispatch('setChecked',{item,active})
+      },
+      loadAllTypeProc(){
+
+          this.$store.dispatch('loadTypeProcAsync',{})
       }
+  },
+  mounted(){
+   // this.loadAllTypeProc()
   }
 };
 </script>
