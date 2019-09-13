@@ -3,7 +3,7 @@
 <v-subheader>{{title}}</v-subheader>
 <v-card class="py-2">
   <v-list :style="'height:'+height+';overflow-y:auto'">
-    <v-list-item-group v-model="settingsprocess" multiple>
+    <v-list-item-group  multiple>
       <v-list-item v-for="(item,index) of getallprocess" :key="item.id" >
         <template v-slot:default="{ active}">
           <v-list-item-action>
@@ -24,7 +24,6 @@
 </template>
 
 <script>
-import { constants } from 'zlib';
 export default {
   name: "synList",
   props: {
@@ -32,7 +31,7 @@ export default {
     height:String
   },
   data: () => ({
-    settingsprocess: [],
+    
   }),
   computed:{
       getallprocess(){

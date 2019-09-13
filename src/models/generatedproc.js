@@ -1,4 +1,5 @@
 import axios from "axios"
+import myutil from "@/functions"
 
 export default {
     state: {
@@ -14,14 +15,14 @@ export default {
             xaxis: {
                 categories: ['27.08.2018', '28.08.2018', '29.08.2018', '30.08.2018', '31.08.2018', '01.09.2018', '02.09.2018', '03.09.2018']
             },
-            colors: ['#E91E63', '#9C27B0']
+            colors: ['#9C27B0', '#E91E63']
         }
     },
     mutations: {
-        setChartData(state) {
+        setChartData(state,data) {
             state.seriesData = [{
                 name: 'other',
-                data: [67, 22, 13, 78, 23, 65, 62, 9]
+                data: myutil.getValueFromResponse(data)
             }]
 
         }
@@ -30,16 +31,19 @@ export default {
         getDataAsync({
             commit
         }) {
+            var servurl = window.location.protocol + '//' + window.location.hostname + ':8088';
             axios({
-                method: 'get',
-                url: 'https://api.coindesk.com/v1/bpi/currentprice.json',
-                responseType: 'json'
+                method: 'post',
+                url: servurl + '/proc/year',
+                responseType: 'json',
+                data:{
+                    'startdate':'2015-01-01',
+                    'typeprocs':[]
+                }
             }).then(function (response) {
                 if (response.status == 200) {
-                    
                     commit('setChartData', response.data)
                 }
-                
             }).catch((error) => {
                 // eslint-disable-next-line no-console
                 console.log(error)
@@ -55,4 +59,5 @@ export default {
             return state.seriesData
         }
     }
+    
 }

@@ -64,9 +64,6 @@ export default{
                     method: 'get',
                     url: servurl +'/proctype',
                     responseType: 'json',
-                    headers: {
-                      'Origin':'http://localhost'  
-                    }
                 }
             )
             .then((response)=>{
