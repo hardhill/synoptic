@@ -3,7 +3,7 @@
 <v-subheader>{{title}}</v-subheader>
 <v-card class="py-2">
   <v-list :style="'height:'+height+';overflow-y:auto'">
-    <v-list-item-group  multiple>
+    <v-list-item-group multiple>
       <v-list-item v-for="(item,index) of getallprocess" :key="item.id" >
         <template v-slot:default="{ active}">
           <v-list-item-action>
@@ -18,8 +18,8 @@
     </v-list-item-group>
   </v-list>
 </v-card>
-  <!-- <div>{{settingsprocess}}</div>
-  <div>{{getallprocess}}</div> -->
+  
+  
 </div>
 </template>
 
@@ -41,6 +41,7 @@ export default {
   methods:{
       setActive(idx,item,active){
           this.$store.dispatch('setChecked',{item,active})
+          this.$store.dispatch('getDataAsync',{startDate:'2015-01-01',selectedId:this.$store.getters.GetSelectedIdProc})
       },
       loadAllTypeProc(){
           this.$store.dispatch('loadTypeProcAsync',{})

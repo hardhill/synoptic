@@ -23,7 +23,7 @@ export default {
     },
     methods:{
         GetChartDatas(){
-            this.$store.dispatch('getDataAsync',{})
+            this.$store.dispatch('getDataAsync')
         }
     },
     mounted:function(){

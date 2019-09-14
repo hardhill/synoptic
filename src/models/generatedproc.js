@@ -3,6 +3,11 @@ import myutil from "@/functions"
 
 export default {
     state: {
+        paramChart:{
+            startdate:'2015-01-01',
+            typechart:'year'
+            
+        },
         seriesData: [{
             name: "цена",
             data: [30, 49, 45, 43, 32, 13, 29, 37],
@@ -34,6 +39,13 @@ export default {
                 colors: ['#9C17B0']
             }
                 
+        },
+        setChartParam(state,payload){
+            state.paramChart = {
+                startdate:payload.startdate,
+                typechart:payload.typechart,
+                processid:payload.processid
+            }
         }
     },
     actions: {
@@ -46,8 +58,8 @@ export default {
                 url: servurl + '/proc/year',
                 responseType: 'json',
                 data:{
-                    'startdate':'2015-01-01',
-                    'typeprocs':[]
+                    'startdate':this.getters.GetParamChart.startdate,
+                    'typeprocs':this.getters.GetSelectedIdProc
                 }
             }).then(function (response) {
                 if (response.status == 200) {
@@ -66,6 +78,9 @@ export default {
         },
         GetSeries(state) {
             return state.seriesData
+        },
+        GetParamChart(state){
+            return state.paramChart
         }
     }
     
