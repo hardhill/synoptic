@@ -2,7 +2,6 @@ import axios from "axios"
 
 export default{
     state:{
-        servhost: window.location.protocol + '//' + window.location.hostname + (window.location.port ? ':' + window.location.port : ''),
         processes:[
             {
                 id:1,
@@ -58,7 +57,7 @@ export default{
             await commit('SET_CHECKED',option)
         },
         loadTypeProcAsync({commit}){
-            var servurl = window.location.protocol + '//' + window.location.hostname + ':8088';
+            var servurl = window.location.protocol + '//' + window.location.hostname + ':8081';
             axios(
                 {
                     method: 'get',

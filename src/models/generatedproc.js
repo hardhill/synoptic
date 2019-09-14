@@ -15,23 +15,32 @@ export default {
             xaxis: {
                 categories: ['27.08.2018', '28.08.2018', '29.08.2018', '30.08.2018', '31.08.2018', '01.09.2018', '02.09.2018', '03.09.2018']
             },
-            colors: ['#9C27B0', '#E91E63']
+            colors: ['#9C27B0']
         }
     },
     mutations: {
         setChartData(state,data) {
             state.seriesData = [{
-                name: 'other',
+                name: 'процессы',
                 data: myutil.getValueFromResponse(data)
             }]
-
+            state.chartOptions = {
+                chart: {
+                    id: "vuechart-example"
+                },
+                xaxis: {
+                    categories:myutil.getLabelFromResponse(data)
+                },
+                colors: ['#9C17B0']
+            }
+                
         }
     },
     actions: {
         getDataAsync({
             commit
         }) {
-            var servurl = window.location.protocol + '//' + window.location.hostname + ':8088';
+            var servurl = window.location.protocol + '//' + window.location.hostname + ':8081';
             axios({
                 method: 'post',
                 url: servurl + '/proc/year',
