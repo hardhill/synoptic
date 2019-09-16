@@ -1,13 +1,15 @@
 <template>
   <v-container fluid>
+    <div style="height:5px">
+    <v-progress-linear v-show="isIdle"
+      indeterminate
+      color="teal"
+    ></v-progress-linear>
+    </div>
     <v-row>
       <v-col cols="12" sm="8">
         <v-row justify="start">
-          <v-btn-toggle class="ml-5">
-            <v-btn>День</v-btn>
-            <v-btn>Месяц</v-btn>
-            <v-btn>Год</v-btn>
-          </v-btn-toggle>
+          <three-button class="ml-5"></three-button>
         </v-row>
         <syn-simbar></syn-simbar>
       </v-col>
@@ -21,11 +23,17 @@
 <script>
 import Simbar from "@/components/Simbar";
 import SList from "@/components/SList";
+import ThreeButton from "@/components/ThreeButton"
 export default {
   components: {
     synSimbar: Simbar,
-    synList: SList
+    synList: SList,
+    threeButton:ThreeButton
   },
-  computed: {}
+  computed: {
+    isIdle(){
+      return this.$store.getters.DoWorking
+    }
+  }
 };
 </script>

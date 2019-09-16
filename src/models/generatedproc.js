@@ -3,6 +3,7 @@ import myutil from "@/functions"
 
 export default {
     state: {
+        workingChart: false,
         paramChart:{
             startdate:'2015-01-01',
             typechart:'year'
@@ -46,6 +47,9 @@ export default {
                 typechart:payload.typechart,
                 processid:payload.processid
             }
+        },
+        setWorkingChart(state,payload){
+            state.workingChart = payload
         }
     },
     actions: {
@@ -53,9 +57,10 @@ export default {
             commit
         }) {
             var servurl = window.location.protocol + '//' + window.location.hostname + ':8081';
+            commit('setWorkingChart',true)
             axios({
                 method: 'post',
-                url: servurl + '/proc/year',
+                url: servurl + '/proc/'+this.getters.GetParamChart.typechart,
                 responseType: 'json',
                 data:{
                     'startdate':this.getters.GetParamChart.startdate,
@@ -65,9 +70,12 @@ export default {
                 if (response.status == 200) {
                     commit('setChartData', response.data)
                 }
+                commit('setWorkingChart',false)
             }).catch((error) => {
                 // eslint-disable-next-line no-console
                 console.log(error)
+            }).finally(()=>{
+                commit('setWorkingChart', false)
             })
 
         }
@@ -81,6 +89,9 @@ export default {
         },
         GetParamChart(state){
             return state.paramChart
+        },
+        DoWorking(state){
+            return state.workingChart
         }
     }
     
