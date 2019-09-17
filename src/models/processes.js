@@ -25,7 +25,7 @@ export default{
             await commit('SET_CHECKED',option)
         },
         loadTypeProcAsync({commit}){
-            var servurl = window.location.protocol + '//' + window.location.hostname + ':8081';
+            var servurl = window.location.protocol + '//' + window.location.hostname + ':8082';
             axios(
                 {
                     method: 'get',

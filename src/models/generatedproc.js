@@ -56,7 +56,7 @@ export default {
         getDataAsync({
             commit
         }) {
-            var servurl = window.location.protocol + '//' + window.location.hostname + ':8081';
+            var servurl = window.location.protocol + '//' + window.location.hostname + ':8082';
             commit('setWorkingChart',true)
             axios({
                 method: 'post',
